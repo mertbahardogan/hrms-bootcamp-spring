@@ -11,13 +11,13 @@ public class JobPosition {
 	
 	@Id 
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name="id",nullable = false)
 	private int id;
 	
-	@Column(name="employer_id")
-	private int employer_id;
+	@Column(name="employer_id",nullable = false)
+	private int employerId;
 	
-	@Column(name="name")
+	@Column(name="name",nullable = false)
 	private String name;
 	
 	

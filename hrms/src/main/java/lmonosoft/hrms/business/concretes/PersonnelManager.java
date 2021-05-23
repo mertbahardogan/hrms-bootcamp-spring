@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lmonosoft.hrms.business.abstracts.PersonnelService;
+import lmonosoft.hrms.core.utilities.results.DataResult;
+import lmonosoft.hrms.core.utilities.results.SuccessDataResult;
 import lmonosoft.hrms.dataAccess.abstracts.PersonnelDao;
 import lmonosoft.hrms.entities.concretes.Personnel;
 
@@ -21,8 +23,8 @@ public class PersonnelManager implements PersonnelService {
 	}
 
 	@Override
-	public List<Personnel> getAll() {
-		return personnelDao.findAll();
+	public DataResult<List<Personnel>> getAll() {
+		return new SuccessDataResult<List<Personnel>>(personnelDao.findAll(),"Personels listed.");
 	}
 
 }

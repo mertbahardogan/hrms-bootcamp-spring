@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lmonosoft.hrms.business.abstracts.EmployerService;
+import lmonosoft.hrms.core.utilities.results.DataResult;
+import lmonosoft.hrms.core.utilities.results.SuccessDataResult;
 import lmonosoft.hrms.dataAccess.abstracts.EmployerDao;
 import lmonosoft.hrms.entities.concretes.Employer;
 
@@ -21,8 +23,8 @@ public class EmployerManager implements EmployerService {
 	}
 
 	@Override
-	public List<Employer> getAll() {
-		return this.employerDao.findAll();
+	public DataResult<List<Employer>> getAll() {
+		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(),"Employers listed.");
 	}
 
 }

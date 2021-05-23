@@ -7,11 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Table(name="job_seekers")
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobSeeker {
 	
 	@Id

@@ -2,11 +2,15 @@ package lmonosoft.hrms.entities.concretes;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="job_positions")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobPosition {
 	
 	@Id 

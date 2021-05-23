@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lmonosoft.hrms.business.abstracts.JobPositionService;
+import lmonosoft.hrms.core.utilities.results.DataResult;
+import lmonosoft.hrms.core.utilities.results.SuccessDataResult;
 import lmonosoft.hrms.dataAccess.abstracts.JobPositionDao;
 import lmonosoft.hrms.entities.concretes.JobPosition;
 
@@ -22,8 +24,8 @@ public class JobPositionManager implements JobPositionService {
 	}
 
 	@Override
-	public List<JobPosition> getAll() {
-		return this.jobPositionDao.findAll();
+	public DataResult<List<JobPosition> > getAll() {
+		return new SuccessDataResult<List<JobPosition>>(this.jobPositionDao.findAll(),"Job Positions listed.");
 	}
 
 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lmonosoft.hrms.business.abstracts.JobPositionService;
+import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.entities.concretes.JobPosition;
 
 @RestController
@@ -23,7 +24,7 @@ public class JobPositionController {
 	}
 
 	@GetMapping("/getAll")
-	public List<JobPosition> getAll() {
+	public DataResult<List<JobPosition>> getAll() {
 		return this.positionService.getAll();
 	}
 	

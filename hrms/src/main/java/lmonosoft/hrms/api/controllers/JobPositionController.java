@@ -13,7 +13,7 @@ import lmonosoft.hrms.entities.concretes.JobPosition;
 @RestController
 @RequestMapping("/api/job_positions")
 public class JobPositionController {
-	
+
 	private JobPositionService positionService;
 
 	@Autowired
@@ -21,15 +21,11 @@ public class JobPositionController {
 		super();
 		this.positionService = positionService;
 	}
-	
+
 	@GetMapping("/getAll")
 	public List<JobPosition> getAll() {
 		return this.positionService.getAll();
 	}
-	
-	
-	
-	
 	
 
 }

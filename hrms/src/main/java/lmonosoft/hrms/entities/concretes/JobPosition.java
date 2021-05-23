@@ -10,14 +10,14 @@ import lombok.Data;
 public class JobPosition {
 	
 	@Id 
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id",nullable = false)
 	private int id;
 	
 	@Column(name="employer_id",nullable = false)
 	private int employerId;
 	
-	@Column(name="name",nullable = false)
+	@Column(name="name",nullable = false,unique = true)
 	private String name;
 	
 	

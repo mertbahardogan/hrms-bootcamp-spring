@@ -1,35 +1,36 @@
 package lmonosoft.hrms.entities.concretes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity
+@PrimaryKeyJoinColumn(name = "user_id")
+@EqualsAndHashCode(callSuper = false)
 @Data
-@Table(name="employers")
+@Entity
+//@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employer {
-	
-	@Id
-	@Column(name="user_id",nullable = false)
-	private int userId;
-	
-	@Column(name="company_name",nullable = false)
+public class Employer extends User {
+
+	// @Id
+	// @Column(name = "user_id")
+	// private int userId;
+
+	@Column(name = "company_name")
 	private String companyName;
-	
-	@Column(name="website",nullable = false)
+
+	@Column(name = "website")
 	private String website;
-	
-	@Column(name="phone_number",nullable = false)
+
+	@Column(name = "phone_number")
 	private String phoneNumber;
-	
-	@Column(name="is_admin_approved",nullable = false)
+
+	@Column(name = "is_admin_approved")
 	private boolean isAdminApproved;
 
 }

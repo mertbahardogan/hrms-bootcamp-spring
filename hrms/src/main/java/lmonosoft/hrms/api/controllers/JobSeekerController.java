@@ -31,9 +31,9 @@ public class JobSeekerController {
 		return this.jobSeekerService.getAll();
 	}
 
-	@PostMapping("/add")
-	public Result Add(@RequestBody JobSeeker jobSeeker) {
-		return this.jobSeekerService.add(jobSeeker);
+	@PostMapping("/register")
+	public Result register(@RequestBody JobSeeker jobSeeker, String passwordConfirm) {
+		return this.jobSeekerService.register(jobSeeker, passwordConfirm);
 	}
 
 }

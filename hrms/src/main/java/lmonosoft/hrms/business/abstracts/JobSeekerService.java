@@ -9,5 +9,5 @@ import lmonosoft.hrms.entities.concretes.JobSeeker;
 public interface JobSeekerService {
 
 	DataResult<List<JobSeeker>> getAll();
-	Result add(JobSeeker jobSeeker);
+	Result register(JobSeeker jobSeeker,String passwordConfirm);
 }

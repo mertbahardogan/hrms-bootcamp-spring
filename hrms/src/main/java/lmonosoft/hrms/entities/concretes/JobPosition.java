@@ -7,13 +7,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-//@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "job_positions")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobPosition { // extends Employer
+public class JobPosition {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

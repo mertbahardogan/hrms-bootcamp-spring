@@ -12,4 +12,14 @@ public class EmployerCheckHelper {
 		}
 		return true;
 	}
+
+	public static boolean isSameDomains(Employer employer) {
+		var employerWebsiteLength = employer.getWebsite().length();
+		if (employer.getEmail()
+				.contains(employer.getWebsite().substring(employerWebsiteLength - 8, employerWebsiteLength - 4))) {
+			return true;
+		}
+		return false;
+	}
+	//Has error for short domain and email. Temporary method.
 }

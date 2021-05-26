@@ -43,11 +43,9 @@ public class EmployerManager implements EmployerService {
 		var checkEmail = employerDao.findByEmail(employer.getEmail()).size() != 0;
 		var checkPassword = !Objects.equal(passwordConfirm, employer.getPassword());
 		var checkPersonelConfirm = !PersonnelCheckHelper.confirmEmployer(employer);
+		var checkDommain = !EmployerCheckHelper.isSameDomains(employer);
 
-		System.out.println(!Objects.equal(passwordConfirm, employer.getPassword()));
-		System.out.println(employer.getPassword() + " " + passwordConfirm);
-		
-		if (checkEmail || checkFields || checkPassword || checkPersonelConfirm) {
+		if (checkEmail || checkFields || checkPassword || checkPersonelConfirm || checkDommain) {
 			String errorMessage = "";
 
 			if (checkEmail) {
@@ -61,6 +59,9 @@ public class EmployerManager implements EmployerService {
 			}
 			if (checkFields) {
 				errorMessage = "All fields are not filled.";
+			}
+			if (checkDommain) {
+				errorMessage = "Email and website domain not equal.";
 			}
 			return new ErrorResult(errorMessage);
 		}

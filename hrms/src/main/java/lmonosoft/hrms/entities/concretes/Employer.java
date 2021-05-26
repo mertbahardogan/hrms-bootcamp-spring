@@ -11,15 +11,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
-//@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employer extends User {
-
-	// @Id
-	// @Column(name = "user_id")
-	// private int userId;
 
 	@Column(name = "company_name")
 	private String companyName;
@@ -29,8 +24,5 @@ public class Employer extends User {
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
-
-	@Column(name = "is_admin_approved")
-	private boolean isAdminApproved;
 
 }

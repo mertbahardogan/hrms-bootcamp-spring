@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@PrimaryKeyJoinColumn(name="user_id")
+@PrimaryKeyJoinColumn(name = "user_id")
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Data
@@ -16,11 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobSeeker extends User {
-
-	// @Id
-	// @Column(name = "user_id")
-	// private int userId;
-
+	
 	@Column(name = "first_name")
 	private String firstName;
 
@@ -32,8 +28,5 @@ public class JobSeeker extends User {
 
 	@Column(name = "birth_of_date")
 	private LocalDate birthOfDate;
-
-	@Column(name = "is_mernis_approved")
-	private boolean isMernisApproved;
 
 }

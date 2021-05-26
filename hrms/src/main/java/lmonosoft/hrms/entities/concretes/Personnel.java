@@ -7,18 +7,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@PrimaryKeyJoinColumn(name="user_id")
+@PrimaryKeyJoinColumn(name = "user_id")
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
 @Table(name = "personnels")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Personnel extends User { // extends User
-
-	//@Id
-	//@Column(name = "user_id")
-	//private int userId;
+public class Personnel extends User {
 
 	@Column(name = "first_name")
 	private String firstName;

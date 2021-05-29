@@ -11,6 +11,7 @@ import lmonosoft.hrms.business.abstracts.EmailService;
 import lmonosoft.hrms.business.abstracts.EmployerService;
 import lmonosoft.hrms.business.concretes.CheckHelper.EmployerCheckHelper;
 import lmonosoft.hrms.business.concretes.CheckHelper.PersonnelCheckHelper;
+import lmonosoft.hrms.business.constants.ErrorMessages;
 import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.core.utilities.results.ErrorResult;
 import lmonosoft.hrms.core.utilities.results.Result;
@@ -41,31 +42,30 @@ public class EmployerManager implements EmployerService {
 	public Result register(Employer employer, String passwordConfirm) {
 		var checkFields = !EmployerCheckHelper.isFillAllFields(employer);
 		var checkEmail = employerDao.findByEmail(employer.getEmail()).size() != 0;
-		var checkPassword = !Objects.equal(passwordConfirm, employer.getPassword());
+		var checkPassword = !EmployerCheckHelper.isMatchPassword(employer, passwordConfirm);
 		var checkPersonelConfirm = !PersonnelCheckHelper.confirmEmployer(employer);
-		var checkDommain = !EmployerCheckHelper.isSameDomains(employer);
+		var checkDommain = !EmployerCheckHelper.isCorrectEmail(employer);
 
 		if (checkEmail || checkFields || checkPassword || checkPersonelConfirm || checkDommain) {
 			String errorMessage = "";
 
 			if (checkEmail) {
-				errorMessage = "Email name already exist.";
+				errorMessage = ErrorMessages.IsExistEmail;
 			}
 			if (checkPassword) {
-				errorMessage = "Passwords is not equal each other.";
+				errorMessage = ErrorMessages.IsMatchPasswords;
 			}
 			if (checkPersonelConfirm) {
-				errorMessage = "Personnel of HRMS not confirm your register.";
+				errorMessage = ErrorMessages.IsConfirmPersonnel;
 			}
 			if (checkFields) {
-				errorMessage = "All fields are not filled.";
+				errorMessage = ErrorMessages.IsFillFields;
 			}
 			if (checkDommain) {
-				errorMessage = "Email and website domain not equal.";
+				errorMessage = ErrorMessages.IsMatchDomain;
 			}
 			return new ErrorResult(errorMessage);
 		}
-
 		employerDao.save(employer);
 		return new SuccessResult("Employer added and " + emailService.sendEmail(employer).getMessage());
 	}

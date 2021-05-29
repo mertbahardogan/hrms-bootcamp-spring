@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lmonosoft.hrms.business.abstracts.JobPositionService;
 import lmonosoft.hrms.business.concretes.CheckHelper.JobPositionCheckHelper;
+import lmonosoft.hrms.business.constants.ErrorMessages;
 import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.core.utilities.results.ErrorResult;
 import lmonosoft.hrms.core.utilities.results.Result;
@@ -41,7 +42,7 @@ public class JobPositionManager implements JobPositionService {
 			return new ErrorResult("Job Postion name already exist.");
 		}
 		if (checkFields) {
-			return new ErrorResult("All fields are not filled.");
+			return new ErrorResult(ErrorMessages.IsFillFields);
 		}
 
 		this.jobPositionDao.save(jobPosition);

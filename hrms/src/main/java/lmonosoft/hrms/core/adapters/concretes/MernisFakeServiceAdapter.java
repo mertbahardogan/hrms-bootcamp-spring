@@ -19,5 +19,4 @@ public class MernisFakeServiceAdapter implements UserCheckService {
 		result = mernisService.userValidationWithMernis(firstName, lastName, nationalId, birthOfDate);
 		return result;
 	}
-
 }

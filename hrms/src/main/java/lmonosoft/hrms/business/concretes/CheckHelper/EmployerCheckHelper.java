@@ -16,7 +16,6 @@ public class EmployerCheckHelper {
 	}
 
 	public static boolean isCorrectEmail(Employer employer) {
-
 		String[] emailArray = employer.getEmail().split("@", 2);
 		String website = employer.getWebsite();
 		if (website.contains("www.")) {
@@ -34,5 +33,4 @@ public class EmployerCheckHelper {
 		}
 		return false;
 	}
-	// Has error for short domain and email. Temporary method.
 }

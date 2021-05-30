@@ -1,6 +1,10 @@
 package lmonosoft.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +18,13 @@ import lombok.NoArgsConstructor;
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisement"})
 public class Employer extends User {
+	
+//	@Id
+//	@Column(name = "user_id")
+//	@PrimaryKeyJoinColumn
+//	private int userId;
 
 	@Column(name = "company_name")
 	private String companyName;
@@ -24,5 +34,8 @@ public class Employer extends User {
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvertisement> jobAdvertisement; 
 
 }

@@ -11,7 +11,7 @@ import lmonosoft.hrms.business.abstracts.EmailService;
 import lmonosoft.hrms.business.abstracts.EmployerService;
 import lmonosoft.hrms.business.concretes.CheckHelper.EmployerCheckHelper;
 import lmonosoft.hrms.business.concretes.CheckHelper.PersonnelCheckHelper;
-import lmonosoft.hrms.business.constants.ErrorMessages;
+import lmonosoft.hrms.business.strings.ErrorMessages;
 import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.core.utilities.results.ErrorResult;
 import lmonosoft.hrms.core.utilities.results.Result;

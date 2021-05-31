@@ -10,9 +10,4 @@ public class PersonnelCheckHelper {
 		return true;
 	}
 
-	public static boolean confirmEmployer(Personnel personnel, Employer employer) {
-		System.out.println(employer.getEmail() + " employer is confirmed. By " + personnel.getFirstName());
-		return true;
-	}
-
 }

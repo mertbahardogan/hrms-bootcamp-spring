@@ -3,7 +3,10 @@ package lmonosoft.hrms.entities.concretes;
 import java.time.LocalDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+import lmonosoft.hrms.business.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,15 +23,19 @@ public class JobAdvertisement {
 	@Column(name = "id")
 	private int id;
 
+	@NotBlank(message = ErrorMessages.IsFillFields)
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "description")
 	private String description;
 
+	//fix that
 	@Column(name = "is_active")
 	private boolean isActive;
 
 	@Column(name = "count_of_open_positions")
 	private int countOfOpenPositions;
 
+	//if jobSeeker run, add that row in here
 	@Column(name = "application_deadline")
 	private LocalDate applicationDeadline;
 

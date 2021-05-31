@@ -16,12 +16,12 @@ import lmonosoft.hrms.entities.concretes.JobSeeker;
 
 @RestController
 @RequestMapping("/api/job_seekers")
-public class JobSeekerController {
+public class JobSeekersController {
 
 	private JobSeekerService jobSeekerService;
 
 	@Autowired
-	public JobSeekerController(JobSeekerService jobSeekerService) {
+	public JobSeekersController(JobSeekerService jobSeekerService) {
 		super();
 		this.jobSeekerService = jobSeekerService;
 	}

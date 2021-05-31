@@ -19,12 +19,12 @@ import lmonosoft.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
 @RequestMapping("/api/job_advertisements/")
-public class JobAdvertisementController {
+public class JobAdvertisementsController {
 
 	private JobAdvertisementService jobAdvertisementService;
 
 	@Autowired
-	public JobAdvertisementController(JobAdvertisementService jobAdvertisementService) {
+	public JobAdvertisementsController(JobAdvertisementService jobAdvertisementService) {
 		super();
 		this.jobAdvertisementService = jobAdvertisementService;
 	}

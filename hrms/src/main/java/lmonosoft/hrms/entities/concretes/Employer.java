@@ -3,9 +3,12 @@ package lmonosoft.hrms.entities.concretes;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lmonosoft.hrms.business.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,12 +29,19 @@ public class Employer extends User {
 //	@PrimaryKeyJoinColumn
 //	private int userId;
 
+	@NotBlank(message = ErrorMessages.IsFillFields)
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "company_name")
 	private String companyName;
 
+	@NotBlank(message = ErrorMessages.IsFillFields)
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "website")
 	private String website;
 
+	@NotBlank(message = ErrorMessages.IsFillFields)
+	@NotNull(message = ErrorMessages.IsFillFields)
+	//Is there phone format there?
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	

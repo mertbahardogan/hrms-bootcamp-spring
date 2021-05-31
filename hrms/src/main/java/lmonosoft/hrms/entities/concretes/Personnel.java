@@ -1,6 +1,10 @@
 package lmonosoft.hrms.entities.concretes;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import lmonosoft.hrms.business.strings.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,9 +20,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Personnel extends User {
 
+	@NotBlank(message = ErrorMessages.IsFillFields)
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "first_name")
 	private String firstName;
 
+	@NotBlank(message = ErrorMessages.IsFillFields)
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "last_name")
 	private String lastName;
 

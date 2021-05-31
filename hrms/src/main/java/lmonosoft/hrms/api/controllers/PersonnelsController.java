@@ -13,12 +13,12 @@ import lmonosoft.hrms.entities.concretes.Personnel;
 
 @RestController
 @RequestMapping("/api/personnels")
-public class PersonnelController {
+public class PersonnelsController {
 
 	private PersonnelService personnelService;
 
 	@Autowired
-	public PersonnelController(PersonnelService personnelService) {
+	public PersonnelsController(PersonnelService personnelService) {
 		super();
 		this.personnelService = personnelService;
 	}

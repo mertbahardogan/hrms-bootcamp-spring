@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lmonosoft.hrms.business.strings.ErrorMessages;
+import lmonosoft.hrms.core.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

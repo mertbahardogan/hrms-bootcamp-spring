@@ -1,4 +1,4 @@
-package lmonosoft.hrms.business.strings;
+package lmonosoft.hrms.core.strings;
 
 public class ErrorMessages {
 	public static final String IsMatchPasswords = "Passwords is not equal each other.";

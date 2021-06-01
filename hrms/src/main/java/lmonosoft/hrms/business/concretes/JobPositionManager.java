@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lmonosoft.hrms.business.abstracts.JobPositionService;
 import lmonosoft.hrms.business.concretes.CheckHelper.JobPositionCheckHelper;
-import lmonosoft.hrms.business.strings.ErrorMessages;
+import lmonosoft.hrms.core.strings.ErrorMessages;
 import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.core.utilities.results.ErrorResult;
 import lmonosoft.hrms.core.utilities.results.Result;

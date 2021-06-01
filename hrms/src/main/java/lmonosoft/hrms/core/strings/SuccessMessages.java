@@ -1,4 +1,4 @@
-package lmonosoft.hrms.business.strings;
+package lmonosoft.hrms.core.strings;
 
 public class SuccessMessages {
 	public static final String dataAdded="Data added to DB.";

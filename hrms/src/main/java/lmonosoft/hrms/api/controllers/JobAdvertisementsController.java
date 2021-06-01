@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -46,7 +47,8 @@ public class JobAdvertisementsController {
 	}
 
 	@GetMapping("getByIsActiveAndReleaseDate")
-	public DataResult<List<JobAdvertisement>> getByIsActiveAndReleaseDate(@RequestParam LocalDate releaseDate) {
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndReleaseDate(
+			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate releaseDate) {
 		return this.jobAdvertisementService.getByIsActiveAndReleaseDate(releaseDate);
 	}
 

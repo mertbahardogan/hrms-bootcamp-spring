@@ -6,7 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import lmonosoft.hrms.business.strings.ErrorMessages;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lmonosoft.hrms.core.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,19 +30,20 @@ public class JobAdvertisement {
 	@Column(name = "description")
 	private String description;
 
-	//fix that
+	// fix that
 	@Column(name = "is_active")
 	private boolean isActive;
 
 	@Column(name = "count_of_open_positions")
 	private int countOfOpenPositions;
 
-	//if jobSeeker run, add that row in here
+	// if jobSeeker run, add that row in here
 	@Column(name = "application_deadline")
 	private LocalDate applicationDeadline;
 
+	@JsonIgnore
 	@Column(name = "release_date")
-	private LocalDate releaseDate;
+	private LocalDate releaseDate = LocalDate.now();
 
 	@Column(name = "minimum_salary")
 	private int minimumSalary;
@@ -57,7 +60,7 @@ public class JobAdvertisement {
 	private JobPosition jobPosition;
 
 	@ManyToOne()
-	@JoinColumn(name="employer_id")
+	@JoinColumn(name = "employer_id")
 	private Employer employer;
 
 }

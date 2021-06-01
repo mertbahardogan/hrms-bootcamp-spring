@@ -63,4 +63,5 @@ public class JobAdvertisement {
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
 
+	// -s takıları eklenip isim düzeltildi. Hata alınırsa dikkat.
 }

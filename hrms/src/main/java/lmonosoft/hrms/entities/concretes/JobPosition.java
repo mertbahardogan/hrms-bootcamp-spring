@@ -37,5 +37,5 @@ public class JobPosition {
 	private String name;
 
 	@OneToMany(mappedBy = "jobPosition")
-	private List<JobAdvertisement> jobAdvertisement;
+	private List<JobAdvertisement> jobAdvertisements;
 }

@@ -6,6 +6,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import java.util.List;
+
 import lmonosoft.hrms.core.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,8 +39,26 @@ public class JobSeeker extends User {
 	@Column(name = "national_id")
 	private String nationalId;
 
-	@NotNull(message = ErrorMessages.IsFillFields) //sorun olabilir
+	@NotNull(message = ErrorMessages.IsFillFields) // sorun olabilir
 	@Column(name = "birth_of_date")
 	private LocalDate birthOfDate;
 
+	@Column(name = "cover_letter")
+	private String coverLetter;
+
+	// @JsonIgnore()
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerExperience> jobSeekerExperiences;
+
+	// @JsonIgnore()
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerLanguage> jobSeekerLanguages;
+
+	// @JsonIgnore()
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerLink> jobSeekerLinks;
+
+	// @JsonIgnore()
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerEducation> jobSeekerEducations;
 }

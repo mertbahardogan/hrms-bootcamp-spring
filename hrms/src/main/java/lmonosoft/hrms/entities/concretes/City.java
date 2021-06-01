@@ -27,5 +27,5 @@ public class City {
 	private String name;
 	
 	@OneToMany(mappedBy = "city")
-	private List<JobAdvertisement> jobAdvertisement; 
+	private List<JobAdvertisement> jobAdvertisements; 
 }

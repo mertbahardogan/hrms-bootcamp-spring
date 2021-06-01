@@ -21,9 +21,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisement"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdvertisement" })
 public class Employer extends User {
-	
+
 //	@Id
 //	@Column(name = "user_id")
 //	@PrimaryKeyJoinColumn
@@ -41,10 +41,11 @@ public class Employer extends User {
 
 	@NotBlank(message = ErrorMessages.IsFillFields)
 	@NotNull(message = ErrorMessages.IsFillFields)
-	//Is there phone format there?
+	// Is there phone format there?
 	@Column(name = "phone_number")
 	private String phoneNumber;
-	
+
 	@OneToMany(mappedBy = "employer")
-	private List<JobAdvertisement> jobAdvertisement; 
+	private List<JobAdvertisement> jobAdvertisements;
+
 }

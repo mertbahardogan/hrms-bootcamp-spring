@@ -1,9 +1,9 @@
 package lmonosoft.hrms.core.strings;
 
 public class SuccessMessages {
-	public static final String dataAdded="Data added to DB.";
+	public static final String dataAdded="Veriler DB'ye kaydedildi.";
 	
-	public static final String dataListed="All data listed.";
+	public static final String dataListed="Tüm veriler listelendi.";
 	
-	public static final String dataUpdated="Data updated.";
+	public static final String dataUpdated="Veri güncellendi.";
 }

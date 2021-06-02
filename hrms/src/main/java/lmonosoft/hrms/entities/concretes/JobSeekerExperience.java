@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lmonosoft.hrms.core.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,14 +43,12 @@ public class JobSeekerExperience {
 	private String position;
 
 	@NotNull(message = ErrorMessages.IsFillFields)
-	@NotBlank(message = ErrorMessages.IsFillFields)
-	@Column(name = "start_name")
+	@Column(name = "start_date")
 	private LocalDate startDate;
 
-	@Column(name = "end_name")
+	@Column(name = "end_date")
 	private LocalDate endDate;
 
-	// @JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name = "job_seeker_id")
 	private JobSeeker jobSeeker;

@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,12 +35,12 @@ public class JobSeekerLanguage {
 	@Column(name = "level")
 	private short level;
 
-	// @JsonIgnore
+	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name = "language_id")
 	private Language language;
 
-	// @JsonIgnore
+	@JsonIgnore
 	@ManyToOne()
 	@JoinColumn(name = "job_seeker_id")
 	private JobSeeker jobSeeker;

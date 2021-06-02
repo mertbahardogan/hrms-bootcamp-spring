@@ -6,6 +6,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 import lmonosoft.hrms.core.strings.ErrorMessages;
@@ -14,13 +17,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@PrimaryKeyJoinColumn(name = "user_id")
+@PrimaryKeyJoinColumn(name = "id")
 @EqualsAndHashCode(callSuper = false)
-@Entity
 @Data
+@Entity
 @Table(name = "job_seekers")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobSeekerEducations", "jobSeekerExperiences","jobSeekerSkills","jobSeekerPictures",
+		"jobSeekerLanguages", "jobSeekerLinks" })
 public class JobSeeker extends User {
 
 	@NotBlank(message = ErrorMessages.IsFillFields)
@@ -39,26 +44,34 @@ public class JobSeeker extends User {
 	@Column(name = "national_id")
 	private String nationalId;
 
-	@NotNull(message = ErrorMessages.IsFillFields) // sorun olabilir
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "birth_of_date")
 	private LocalDate birthOfDate;
 
 	@Column(name = "cover_letter")
 	private String coverLetter;
 
-	// @JsonIgnore()
+	@JsonIgnore()
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerExperience> jobSeekerExperiences;
 
-	// @JsonIgnore()
+	@JsonIgnore()
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerLanguage> jobSeekerLanguages;
 
-	// @JsonIgnore()
+	@JsonIgnore()
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerLink> jobSeekerLinks;
 
-	// @JsonIgnore()
+	@JsonIgnore()
 	@OneToMany(mappedBy = "jobSeeker")
 	private List<JobSeekerEducation> jobSeekerEducations;
+
+	@JsonIgnore()
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerSkill> jobSeekerSkills;
+	
+	@JsonIgnore()
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<JobSeekerPicture> jobSeekerPictures;
 }

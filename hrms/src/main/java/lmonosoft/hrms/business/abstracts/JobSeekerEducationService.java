@@ -9,7 +9,5 @@ import lmonosoft.hrms.entities.concretes.JobSeekerEducation;
 public interface JobSeekerEducationService {
 	Result add(JobSeekerEducation jobSeekerEducation);
 
-	DataResult<List<JobSeekerEducation>> getAll();
-
-	DataResult<List<JobSeekerEducation>> getAllByJobSeekerIdOrderByGraduationDate(int jobSeekerId);
+	DataResult<List<JobSeekerEducation>> getAllByJobSeekerIdOrderByGraduationDateDesc(int jobSeekerId);
 }

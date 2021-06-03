@@ -31,15 +31,10 @@ public class JobSeekerEducationManager implements JobSeekerEducationService {
 	}
 
 	@Override
-	public DataResult<List<JobSeekerEducation>> getAll() {
-		return new SuccessDataResult<List<JobSeekerEducation>>(seekerEducationDao.findAll());
-	}
-
-	@Override
-	public DataResult<List<JobSeekerEducation>> getAllByJobSeekerIdOrderByGraduationDate(int jobSeekerId) {
+	public DataResult<List<JobSeekerEducation>> getAllByJobSeekerIdOrderByGraduationDateDesc(int jobSeekerId) {
 
 		return new SuccessDataResult<List<JobSeekerEducation>>(
-				seekerEducationDao.getAllByJobSeekerIdOrderByGraduationDate(jobSeekerId));
+				seekerEducationDao.getAllByJobSeekerIdOrderByGraduationDateDesc(jobSeekerId));
 	}
 
 }

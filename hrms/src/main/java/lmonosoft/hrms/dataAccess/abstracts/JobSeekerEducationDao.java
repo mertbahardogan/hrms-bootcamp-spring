@@ -8,5 +8,5 @@ import lmonosoft.hrms.entities.concretes.JobSeekerEducation;
 
 public interface JobSeekerEducationDao extends JpaRepository<JobSeekerEducation, Integer> {
 
-	List<JobSeekerEducation> getAllByJobSeekerIdOrderByGraduationDate(int jobSeekerId);
+	List<JobSeekerEducation> getAllByJobSeekerIdOrderByGraduationDateDesc(int jobSeekerId);
 }

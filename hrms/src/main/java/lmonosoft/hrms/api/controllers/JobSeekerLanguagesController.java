@@ -1,5 +1,7 @@
 package lmonosoft.hrms.api.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,13 +25,8 @@ public class JobSeekerLanguagesController {
 	}
 
 	@PostMapping("add")
-	public ResponseEntity<?> add(@RequestBody JobSeekerLanguage jobSeekerLanguage) {
+	public ResponseEntity<?> add(@Valid @RequestBody JobSeekerLanguage jobSeekerLanguage) {
 		return ResponseEntity.ok(this.seekerLanguageService.add(jobSeekerLanguage));
-	}
-
-	@GetMapping("getAll")
-	public ResponseEntity<?> getAll() {
-		return ResponseEntity.ok(this.seekerLanguageService.getAll());
 	}
 
 	@GetMapping("getAllByJobSeekerId")

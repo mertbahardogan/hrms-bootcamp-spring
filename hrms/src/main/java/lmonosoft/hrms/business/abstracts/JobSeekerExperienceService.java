@@ -10,8 +10,6 @@ public interface JobSeekerExperienceService {
 
 	Result add(JobSeekerExperience jobSeekerExperience);
 
-	DataResult<List<JobSeekerExperience>> getAll();
-
-	DataResult<List<JobSeekerExperience>> getAllByJobSeekerIdOrderByEndDate(int jobSeekerId);
+	DataResult<List<JobSeekerExperience>> getAllByJobSeekerIdOrderByEndDateDesc(int jobSeekerId);
 
 }

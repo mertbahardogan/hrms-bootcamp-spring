@@ -17,7 +17,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@PrimaryKeyJoinColumn(name = "id")
+@PrimaryKeyJoinColumn(name = "user_id")
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Entity

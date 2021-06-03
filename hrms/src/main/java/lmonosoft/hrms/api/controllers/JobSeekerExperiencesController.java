@@ -1,5 +1,7 @@
 package lmonosoft.hrms.api.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,18 +27,13 @@ public class JobSeekerExperiencesController {
 	}
 
 	@PostMapping("add")
-	public ResponseEntity<?> add(@RequestBody JobSeekerExperience jobSeekerExperience) {
+	public ResponseEntity<?> add(@Valid @RequestBody JobSeekerExperience jobSeekerExperience) {
 		return ResponseEntity.ok(this.seekerExperienceService.add(jobSeekerExperience));
 	}
 
-	@GetMapping("getAll")
-	public ResponseEntity<?> getAll() {
-		return ResponseEntity.ok(this.seekerExperienceService.getAll());
-	}
-
-	@GetMapping("getAllByJobSeekerIdOrderByEndDate")
-	public ResponseEntity<?> getAllByJobSeekerIdOrderByEndDate(@RequestParam int jobSeekerId) {
-		return ResponseEntity.ok(this.seekerExperienceService.getAllByJobSeekerIdOrderByEndDate(jobSeekerId));
+	@GetMapping("getAllByJobSeekerIdOrderByEndDateDesc")
+	public ResponseEntity<?> getAllByJobSeekerIdOrderByEndDateDesc(@RequestParam int jobSeekerId) {
+		return ResponseEntity.ok(this.seekerExperienceService.getAllByJobSeekerIdOrderByEndDateDesc(jobSeekerId));
 	}
 
 }

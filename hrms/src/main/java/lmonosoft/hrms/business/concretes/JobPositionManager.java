@@ -29,22 +29,16 @@ public class JobPositionManager implements JobPositionService {
 
 	@Override
 	public DataResult<List<JobPosition>> getAll() {
-		return new SuccessDataResult<List<JobPosition>>(this.jobPositionDao.findAll(), "Job Positions listed.");
+		return new SuccessDataResult<List<JobPosition>>(this.jobPositionDao.findAll());
 	}
 
 	@Override
 	public Result add(JobPosition jobPosition) {
 
 		var checkPositon = this.jobPositionDao.findByName(jobPosition.getName()).size() != 0;
-//		var checkFields = !JobPositionCheckHelper.isFillAllFields(jobPosition);
-
 		if (checkPositon) {
 			return new ErrorResult("Job Postion name already exist.");
 		}
-//		if (checkFields) {
-//			return new ErrorResult(ErrorMessages.IsFillFields);
-//		}
-
 		this.jobPositionDao.save(jobPosition);
 		return new SuccessResult("Job Position added.");
 	}

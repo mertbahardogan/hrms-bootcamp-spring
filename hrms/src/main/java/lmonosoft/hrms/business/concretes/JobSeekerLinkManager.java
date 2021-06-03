@@ -31,11 +31,6 @@ public class JobSeekerLinkManager implements JobSeekerLinkService {
 	}
 
 	@Override
-	public DataResult<List<JobSeekerLink>> getAll() {
-		return new SuccessDataResult<List<JobSeekerLink>>(seekerLinkDao.findAll());
-	}
-
-	@Override
 	public DataResult<List<JobSeekerLink>> getAllByJobSeekerId(int jobSeekerId) {
 		return new SuccessDataResult<List<JobSeekerLink>>(seekerLinkDao.getAllByJobSeekerId(jobSeekerId));
 	}

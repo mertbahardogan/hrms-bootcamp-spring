@@ -24,7 +24,7 @@ public class PersonnelManager implements PersonnelService {
 
 	@Override
 	public DataResult<List<Personnel>> getAll() {
-		return new SuccessDataResult<List<Personnel>>(personnelDao.findAll(),"Personels listed.");
+		return new SuccessDataResult<List<Personnel>>(personnelDao.findAll());
 	}
 
 }

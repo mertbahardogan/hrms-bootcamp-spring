@@ -1,21 +1,17 @@
 package lmonosoft.hrms.api.controllers;
 
-import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import lmonosoft.hrms.business.abstracts.JobSeekerService;
-import lmonosoft.hrms.core.utilities.results.DataResult;
-import lmonosoft.hrms.core.utilities.results.Result;
 import lmonosoft.hrms.entities.concretes.JobSeeker;
 
 @RestController
-@RequestMapping("/api/job_seekers")
+@RequestMapping("/api/job_seekers/")
 public class JobSeekersController {
 
 	private JobSeekerService jobSeekerService;
@@ -26,14 +22,19 @@ public class JobSeekersController {
 		this.jobSeekerService = jobSeekerService;
 	}
 
-	@GetMapping("/getAll")
-	public DataResult<List<JobSeeker>> getAll() {
-		return this.jobSeekerService.getAll();
+	@PostMapping("register")
+	public ResponseEntity<?> register(@Valid @RequestBody JobSeeker jobSeeker, String passwordConfirm) {
+		return ResponseEntity.ok(this.jobSeekerService.register(jobSeeker, passwordConfirm));
 	}
 
-	@PostMapping("/register")
-	public Result register(@RequestBody JobSeeker jobSeeker, String passwordConfirm) {
-		return this.jobSeekerService.register(jobSeeker, passwordConfirm);
+	@GetMapping("getAll")
+	public ResponseEntity<?> getAll() {
+		return ResponseEntity.ok(this.jobSeekerService.getAll());
+	}
+
+	@GetMapping("getResumeByJobSeekerId")
+	public ResponseEntity<?> getResumeByJobSeekerId(@RequestParam int jobSeekerId) {
+		return ResponseEntity.ok(this.jobSeekerService.getResumeByJobSeekerId(jobSeekerId));
 	}
 
 }

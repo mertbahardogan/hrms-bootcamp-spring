@@ -7,5 +7,5 @@ import lmonosoft.hrms.entities.concretes.JobSeekerExperience;
 
 public interface JobSeekerExperienceDao extends JpaRepository<JobSeekerExperience, Integer> {
 
-	List<JobSeekerExperience> getAllByJobSeekerIdOrderByEndDate(int jobSeekerID);
+	List<JobSeekerExperience> getAllByJobSeekerIdOrderByEndDateDesc(int jobSeekerID);
 }

@@ -37,7 +37,7 @@ public class JobSeekerPicture {
 
 	@Column(name = "uploaded_date")
 	@NotNull(message = ErrorMessages.IsFillFields)
-	private LocalDate uploadedDate;
+	private LocalDate uploadedDate; //Can I add .now?
 
 	@ManyToOne()
 	@JoinColumn(name = "job_seeker_id")

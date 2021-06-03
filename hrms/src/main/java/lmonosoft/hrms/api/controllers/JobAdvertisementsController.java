@@ -3,6 +3,8 @@ package lmonosoft.hrms.api.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +33,7 @@ public class JobAdvertisementsController {
 	}
 
 	@PostMapping("add")
-	public Result add(@RequestBody JobAdvertisement jobAdvertisement) {
+	public Result add(@Valid @RequestBody JobAdvertisement jobAdvertisement) {
 
 		return this.jobAdvertisementService.add(jobAdvertisement);
 	}

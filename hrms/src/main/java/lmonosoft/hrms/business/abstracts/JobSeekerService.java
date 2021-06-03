@@ -5,9 +5,15 @@ import java.util.List;
 import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.core.utilities.results.Result;
 import lmonosoft.hrms.entities.concretes.JobSeeker;
+import lmonosoft.hrms.entities.dtos.JobSeekerResumeDto;
 
 public interface JobSeekerService {
 
 	DataResult<List<JobSeeker>> getAll();
-	Result register(JobSeeker jobSeeker,String passwordConfirm);
+
+	Result register(JobSeeker jobSeeker, String passwordConfirm);
+
+	DataResult<JobSeekerResumeDto> getResumeByJobSeekerId(int jobSeekerId);
+
+	DataResult<JobSeeker> getById(int jobSeekerId);
 }

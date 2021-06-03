@@ -1,5 +1,7 @@
 package lmonosoft.hrms.api.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,7 @@ public class JobSeekerSkillsController {
 	}
 
 	@PostMapping("add")
-	public ResponseEntity<?> add(@RequestBody JobSeekerSkill jobSeekerSkill) {
+	public ResponseEntity<?> add(@Valid @RequestBody JobSeekerSkill jobSeekerSkill) {
 		return ResponseEntity.ok(this.seekerSkillService.add(jobSeekerSkill));
 	}
 

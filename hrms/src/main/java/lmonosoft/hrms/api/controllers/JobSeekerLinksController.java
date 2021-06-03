@@ -1,5 +1,7 @@
 package lmonosoft.hrms.api.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,15 +27,10 @@ public class JobSeekerLinksController {
 	}
 
 	@PostMapping("add")
-	public ResponseEntity<?> add(@RequestBody JobSeekerLink jobSeekerLink) {
+	public ResponseEntity<?> add(@Valid @RequestBody JobSeekerLink jobSeekerLink) {
 		return ResponseEntity.ok(this.seekerLinkService.add(jobSeekerLink));
 	}
-
-	@GetMapping("getAll")
-	public ResponseEntity<?> getAll() {
-		return ResponseEntity.ok(this.seekerLinkService.getAll());
-	}
-
+	
 	@GetMapping("getAllByJobSeekerId")
 	public ResponseEntity<?> getAllByJobSeekerId(@RequestParam int jobSeekerId) {
 		return ResponseEntity.ok(this.seekerLinkService.getAllByJobSeekerId(jobSeekerId));

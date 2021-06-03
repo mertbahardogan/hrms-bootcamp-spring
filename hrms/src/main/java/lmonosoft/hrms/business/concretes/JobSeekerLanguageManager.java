@@ -31,11 +31,6 @@ public class JobSeekerLanguageManager implements JobSeekerLanguageService {
 	}
 
 	@Override
-	public DataResult<List<JobSeekerLanguage>> getAll() {
-		return new SuccessDataResult<List<JobSeekerLanguage>>(seekerLanguageDao.findAll());
-	}
-
-	@Override
 	public DataResult<List<JobSeekerLanguage>> getAllByJobSeekerId(int jobSeekerId) {
 		return new SuccessDataResult<List<JobSeekerLanguage>>(seekerLanguageDao.getAllByJobSeekerId(jobSeekerId));
 	}

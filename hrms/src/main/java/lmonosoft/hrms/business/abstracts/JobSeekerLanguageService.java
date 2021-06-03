@@ -9,8 +9,6 @@ import java.util.List;
 public interface JobSeekerLanguageService {
 	Result add(JobSeekerLanguage jobSeekerLanguage);
 
-	DataResult<List<JobSeekerLanguage>> getAll();
-
 	DataResult<List<JobSeekerLanguage>> getAllByJobSeekerId(int jobSeekerId);
 
 }

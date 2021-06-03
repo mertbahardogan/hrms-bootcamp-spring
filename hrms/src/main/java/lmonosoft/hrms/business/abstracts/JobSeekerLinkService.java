@@ -9,8 +9,6 @@ import lmonosoft.hrms.entities.concretes.JobSeekerLink;
 public interface JobSeekerLinkService {
 	Result add(JobSeekerLink jobSeekerLink);
 
-	DataResult<List<JobSeekerLink>> getAll();
-
 	DataResult<List<JobSeekerLink>> getAllByJobSeekerId(int jobSeekerId);
 
 }

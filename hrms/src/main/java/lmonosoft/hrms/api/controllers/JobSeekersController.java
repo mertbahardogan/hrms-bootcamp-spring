@@ -1,6 +1,5 @@
 package lmonosoft.hrms.api.controllers;
 
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import lmonosoft.hrms.business.abstracts.JobSeekerService;
 import lmonosoft.hrms.entities.concretes.JobSeeker;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/job_seekers/")
 public class JobSeekersController {

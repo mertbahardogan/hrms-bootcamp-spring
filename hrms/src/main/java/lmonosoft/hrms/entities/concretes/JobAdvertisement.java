@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lmonosoft.hrms.core.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
@@ -62,4 +63,12 @@ public class JobAdvertisement {
 	@ManyToOne()
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
+
+	@ManyToOne()
+	@JoinColumn(name = "work_type_id")
+	private WorkType workType;
+	
+	@ManyToOne()
+	@JoinColumn(name = "work_time_id")
+	private WorkTime workTime;
 }

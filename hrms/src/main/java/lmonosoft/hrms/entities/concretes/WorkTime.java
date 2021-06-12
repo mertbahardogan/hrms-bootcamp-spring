@@ -2,40 +2,36 @@ package lmonosoft.hrms.entities.concretes;
 
 import java.util.List;
 
-import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lmonosoft.hrms.core.strings.ErrorMessages;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "job_positions")
 @Data
+@Entity
+@Table(name = "work_times")
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdvertisements" })
-public class JobPosition {
-
+public class WorkTime {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 
-	@Min(value = 1, message = ErrorMessages.IsFillFields)
-	@Column(name = "employer_id")
-	private int employerId;
-
-	@NotBlank(message = ErrorMessages.IsFillFields)
-	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "name")
 	private String name;
 
-	@OneToMany(mappedBy = "jobPosition")
+	@OneToMany(mappedBy = "workTime")
 	private List<JobAdvertisement> jobAdvertisements;
+
 }

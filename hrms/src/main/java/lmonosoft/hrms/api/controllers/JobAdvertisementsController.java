@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,6 +21,7 @@ import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.core.utilities.results.Result;
 import lmonosoft.hrms.entities.concretes.JobAdvertisement;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/job_advertisements/")
 public class JobAdvertisementsController {

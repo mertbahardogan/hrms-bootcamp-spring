@@ -18,9 +18,17 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 
 	@Query("FROM JobAdvertisement where isActive = True and releaseDate=:releaseDate")
 	List<JobAdvertisement> getByIsActiveAndReleaseDate(LocalDate releaseDate);
-
+	
 	@Query("FROM JobAdvertisement where isActive = True and employer.companyName=:companyName")
 	List<JobAdvertisement> getByIsActiveAndEmployer_CompanyName(String companyName);
+	
+	List<JobAdvertisement> getAllByEmployerId(int employerId);
+	
+	@Query("FROM JobAdvertisement where isApproved = False")
+	List<JobAdvertisement> getAllByIsNotApproved();
+	
+	@Query("FROM JobAdvertisement where isApproved = True")
+	List<JobAdvertisement> getAllByIsApproved();
 	
 	
 }

@@ -18,7 +18,17 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getByIsActiveAndReleaseDate(LocalDate releaseDate);
 
 	DataResult<List<JobAdvertisement>> getByIsActiveAndEmployer_CompanyName(String companyName);
-	
-    Result closeJobAdvertisement(int jobAdvertisementId);
+
+	Result openJobAdvertisement(int jobAdvertisementId);
+
+	Result closeJobAdvertisement(int jobAdvertisementId);
+
+	DataResult<List<JobAdvertisement>> getAllByEmployerId(int employerId);
+
+	DataResult<List<JobAdvertisement>> getAllByIsNotApproved();
+
+	DataResult<List<JobAdvertisement>> getAllByIsApproved();
+
+	Result approveJobAdvertisement(int jobAdvertisementId);
 
 }

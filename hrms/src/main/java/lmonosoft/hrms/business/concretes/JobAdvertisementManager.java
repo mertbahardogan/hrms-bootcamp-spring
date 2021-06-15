@@ -63,12 +63,49 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				this.jobAdvertisementDao.getByIsActiveAndEmployer_CompanyName(companyName), SuccessMessages.dataListed);
 	}
+	
+	@Override
+	public Result openJobAdvertisement(int jobAdvertisementId) {
+		JobAdvertisement setAdvertisement = this.jobAdvertisementDao.getOne(jobAdvertisementId);
+		setAdvertisement.setActive(true);
+
+		this.jobAdvertisementDao.save(setAdvertisement);
+		return new SuccessResult(SuccessMessages.dataUpdated);
+	}
 
 	@Override
 	public Result closeJobAdvertisement(int jobAdvertisementId) {
-
 		JobAdvertisement setAdvertisement = this.jobAdvertisementDao.getOne(jobAdvertisementId);
 		setAdvertisement.setActive(false);
+
+		this.jobAdvertisementDao.save(setAdvertisement);
+		return new SuccessResult(SuccessMessages.dataUpdated);
+	}
+
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getAllByEmployerId(int employerId) {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllByEmployerId(employerId),
+				SuccessMessages.dataListed);
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getAllByIsNotApproved() {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllByIsNotApproved(),
+				SuccessMessages.dataListed);
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getAllByIsApproved() {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllByIsApproved(),
+				SuccessMessages.dataListed);
+	}
+
+	@Override
+	public Result approveJobAdvertisement(int jobAdvertisementId) {
+
+		JobAdvertisement setAdvertisement = this.jobAdvertisementDao.getOne(jobAdvertisementId);
+		setAdvertisement.setApproved(true);
 
 		this.jobAdvertisementDao.save(setAdvertisement);
 		return new SuccessResult(SuccessMessages.dataUpdated);

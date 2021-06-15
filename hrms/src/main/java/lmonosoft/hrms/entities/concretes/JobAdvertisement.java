@@ -31,14 +31,15 @@ public class JobAdvertisement {
 	@Column(name = "description")
 	private String description;
 
-	// fix that
+	
 	@Column(name = "is_active")
-	private boolean isActive;
+	private boolean isActive=true;
 
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "count_of_open_positions")
 	private int countOfOpenPositions;
 
-	// if jobSeeker run, add that row in here
+	@NotNull(message = ErrorMessages.IsFillFields)
 	@Column(name = "application_deadline")
 	private LocalDate applicationDeadline;
 
@@ -51,6 +52,9 @@ public class JobAdvertisement {
 
 	@Column(name = "maximum_salary")
 	private int maximumSalary;
+	
+	@Column(name="is_approved")
+	private boolean isApproved; 
 
 	@ManyToOne()
 	@JoinColumn(name = "city_id")

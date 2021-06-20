@@ -70,4 +70,10 @@ public class EmployerManager implements EmployerService {
 		return new SuccessResult("Employer added and " + emailService.sendEmail(employer).getMessage());
 	}
 
+	@Override
+	public DataResult<List<Employer>> getEmployerById(int id) {
+		return new SuccessDataResult<List<Employer>>(this.employerDao.getEmployerById(id));
+
+	}
+
 }

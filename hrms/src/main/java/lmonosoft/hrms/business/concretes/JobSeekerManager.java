@@ -50,13 +50,6 @@ public class JobSeekerManager implements JobSeekerService {
 		this.seekerExperienceService = seekerExperienceService;
 	}
 
-//	public JobSeekerManager(JobSeekerDao jobSeekerDao, UserCheckService userCheckService, EmailService emailService) {
-//		super();
-//		this.jobSeekerDao = jobSeekerDao;
-//		this.userCheckService = userCheckService;
-//		this.emailService = emailService;
-//	}
-
 	@Override
 	public DataResult<List<JobSeeker>> getAll() {
 		return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.findAll());

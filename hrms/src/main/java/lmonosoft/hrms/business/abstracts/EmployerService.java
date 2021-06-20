@@ -9,6 +9,8 @@ import lmonosoft.hrms.entities.concretes.Employer;
 public interface EmployerService {
 	DataResult<List<Employer>> getAll();
 
+	DataResult<List<Employer>> getEmployerById(int id);
+	
 	Result register(Employer employer, String passwordConfirm);
 
 }

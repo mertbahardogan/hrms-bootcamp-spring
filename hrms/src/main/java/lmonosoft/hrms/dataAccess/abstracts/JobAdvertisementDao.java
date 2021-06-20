@@ -11,24 +11,31 @@ import lmonosoft.hrms.entities.concretes.JobAdvertisement;
 
 @Repository
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer> {
-	
-	
-	@Query("FROM JobAdvertisement where isActive = True")
-	List<JobAdvertisement> getByIsActive();
 
-	@Query("FROM JobAdvertisement where isActive = True and releaseDate=:releaseDate")
+	@Query("FROM JobAdvertisement WHERE isActive = True")
+	List<JobAdvertisement> getByIsActive();
+	
+	@Query("FROM JobAdvertisement WHERE isActive = True and isApproved=True")
+	List<JobAdvertisement> getByIsActiveAndIsApproved();
+	
+	@Query("FROM JobAdvertisement WHERE isActive = True and isApproved=True and employer.id=:employerId")
+	List<JobAdvertisement> getByIsActiveAndIsApprovedAndEmployer_Id(int employerId);
+	
+	@Query("FROM JobAdvertisement WHERE isActive = True and releaseDate=:releaseDate")
 	List<JobAdvertisement> getByIsActiveAndReleaseDate(LocalDate releaseDate);
-	
-	@Query("FROM JobAdvertisement where isActive = True and employer.companyName=:companyName")
+
+	@Query("FROM JobAdvertisement WHERE isActive=True and id=:id")
+	List<JobAdvertisement> getByIsActiveAndId(int id);
+
+	@Query("FROM JobAdvertisement WHERE isActive = True and employer.companyName=:companyName")
 	List<JobAdvertisement> getByIsActiveAndEmployer_CompanyName(String companyName);
-	
+
 	List<JobAdvertisement> getAllByEmployerId(int employerId);
-	
-	@Query("FROM JobAdvertisement where isApproved = False")
+
+	@Query("FROM JobAdvertisement WHERE isApproved = False")
 	List<JobAdvertisement> getAllByIsNotApproved();
-	
-	@Query("FROM JobAdvertisement where isApproved = True")
+
+	@Query("FROM JobAdvertisement WHERE isApproved = True")
 	List<JobAdvertisement> getAllByIsApproved();
-	
-	
+
 }

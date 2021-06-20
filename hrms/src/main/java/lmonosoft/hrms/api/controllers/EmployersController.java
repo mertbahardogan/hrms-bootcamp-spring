@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lmonosoft.hrms.business.abstracts.EmployerService;
@@ -17,7 +18,7 @@ import lmonosoft.hrms.entities.concretes.Employer;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/employers")
+@RequestMapping("/api/employers/")
 public class EmployersController {
 
 	private EmployerService employerService;
@@ -28,13 +29,19 @@ public class EmployersController {
 		this.employerService = employerService;
 	}
 
-	@GetMapping("/getAll")
+	@GetMapping("getAll")
 	public DataResult<List<Employer>> getAll() {
 		return this.employerService.getAll();
 	}
 
-	@PostMapping("/register")
+	@GetMapping("getEmployerById")
+	public DataResult<List<Employer>> getEmployerById(@RequestParam int id) {
+		return this.employerService.getEmployerById(id);
+	}
+
+	@PostMapping("register")
 	public Result register(@RequestBody Employer employer, String passwordConfirm) {
 		return this.employerService.register(employer, passwordConfirm);
 	}
+
 }

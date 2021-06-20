@@ -13,9 +13,15 @@ public interface JobAdvertisementService {
 
 	DataResult<List<JobAdvertisement>> getAll();
 
-	DataResult<List<JobAdvertisement>> getByIsActive();
+	DataResult<List<JobAdvertisement>> getByIsActive(); // silinecek
+
+	DataResult<List<JobAdvertisement>> getByIsActiveAndIsApproved();
+
+	DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndEmployer_Id(int employerId);
 
 	DataResult<List<JobAdvertisement>> getByIsActiveAndReleaseDate(LocalDate releaseDate);
+
+	DataResult<List<JobAdvertisement>> getByIsActiveAndId(int id);
 
 	DataResult<List<JobAdvertisement>> getByIsActiveAndEmployer_CompanyName(String companyName);
 

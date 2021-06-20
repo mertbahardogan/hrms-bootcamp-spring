@@ -53,9 +53,21 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApproved() {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveAndIsApproved(),
+				SuccessMessages.dataListed);
+	}
+
+	@Override
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndReleaseDate(LocalDate releaseDate) {
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				this.jobAdvertisementDao.getByIsActiveAndReleaseDate(releaseDate), SuccessMessages.dataListed);
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndId(int id) {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveAndId(id),
+				SuccessMessages.dataListed);
 	}
 
 	@Override
@@ -63,7 +75,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				this.jobAdvertisementDao.getByIsActiveAndEmployer_CompanyName(companyName), SuccessMessages.dataListed);
 	}
-	
+
 	@Override
 	public Result openJobAdvertisement(int jobAdvertisementId) {
 		JobAdvertisement setAdvertisement = this.jobAdvertisementDao.getOne(jobAdvertisementId);
@@ -82,6 +94,12 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessResult(SuccessMessages.dataUpdated);
 	}
 
+	@Override
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndEmployer_Id(int employerId) {
+		return new SuccessDataResult<List<JobAdvertisement>>(
+				this.jobAdvertisementDao.getByIsActiveAndIsApprovedAndEmployer_Id(employerId),
+				SuccessMessages.dataListed);
+	}
 
 	@Override
 	public DataResult<List<JobAdvertisement>> getAllByEmployerId(int employerId) {

@@ -58,12 +58,28 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getByIsActive();
 	}
 
+	@GetMapping("getByIsActiveAndIsApproved")
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApproved() {
+		return this.jobAdvertisementService.getByIsActiveAndIsApproved();
+	}
+	
+	@GetMapping("getByIsActiveAndIsApprovedAndEmployer_Id")
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndEmployer_Id(@RequestParam int employerId) {
+	return this.jobAdvertisementService.getByIsActiveAndIsApprovedAndEmployer_Id(employerId);
+	}
+	
 	@GetMapping("getByIsActiveAndReleaseDate")
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndReleaseDate(
 			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate releaseDate) {
 		return this.jobAdvertisementService.getByIsActiveAndReleaseDate(releaseDate);
 	}
 
+	@GetMapping("getByIsActiveAndId")
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndId(@RequestParam int id) {
+		return this.jobAdvertisementService.getByIsActiveAndId(id);
+	}
+
+	
 	@GetMapping("getByIsActiveAndEmployer_CompanyName")
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndEmployer_CompanyName(@RequestParam String companyName) {
 		return this.jobAdvertisementService.getByIsActiveAndEmployer_CompanyName(companyName);
@@ -73,32 +89,31 @@ public class JobAdvertisementsController {
 	public Result openJobAdvertisement(@RequestParam int jobAdvertisementId) {
 		return this.jobAdvertisementService.openJobAdvertisement(jobAdvertisementId);
 	}
-	
+
 	@PutMapping("closeJobAdvertisement")
 	public Result closeJobAdvertisement(@RequestParam int jobAdvertisementId) {
 		return this.jobAdvertisementService.closeJobAdvertisement(jobAdvertisementId);
 	}
-	
+
 	@GetMapping("getAllByEmployerId")
 	public DataResult<List<JobAdvertisement>> getAllByEmployerId(@RequestParam int employerId) {
 		return this.jobAdvertisementService.getAllByEmployerId(employerId);
 	}
-	
+
 	@GetMapping("getAllByIsNotApproved")
 	public DataResult<List<JobAdvertisement>> getAllByIsNotApproved() {
 		return this.jobAdvertisementService.getAllByIsNotApproved();
 	}
-	
+
 	@GetMapping("getAllByIsApproved")
 	public DataResult<List<JobAdvertisement>> getAllByIsApproved() {
 		return this.jobAdvertisementService.getAllByIsApproved();
 	}
-	
+
 	@PutMapping("approveJobAdvertisement")
 	public Result approveJobAdvertisement(@RequestParam int jobAdvertisementId) {
 		return this.jobAdvertisementService.approveJobAdvertisement(jobAdvertisementId);
 	}
-	
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)

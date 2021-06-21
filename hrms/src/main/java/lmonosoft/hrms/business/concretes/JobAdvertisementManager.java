@@ -95,6 +95,13 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndJob_Position_Id(int jobPositionId) {
+		return new SuccessDataResult<List<JobAdvertisement>>(
+				this.jobAdvertisementDao.getByIsActiveAndIsApprovedAndJob_Position_Id(jobPositionId),
+				SuccessMessages.dataListed);
+	}
+
+	@Override
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndEmployer_Id(int employerId) {
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				this.jobAdvertisementDao.getByIsActiveAndIsApprovedAndEmployer_Id(employerId),
@@ -127,6 +134,13 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 		this.jobAdvertisementDao.save(setAdvertisement);
 		return new SuccessResult(SuccessMessages.dataUpdated);
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedOrderByReleaseDateDesc() {
+		return new SuccessDataResult<List<JobAdvertisement>>(
+				this.jobAdvertisementDao.getByIsActiveAndIsApprovedOrderByReleaseDateDesc(),
+				SuccessMessages.dataListed);
 	}
 
 }

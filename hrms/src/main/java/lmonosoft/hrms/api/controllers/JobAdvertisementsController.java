@@ -62,12 +62,23 @@ public class JobAdvertisementsController {
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApproved() {
 		return this.jobAdvertisementService.getByIsActiveAndIsApproved();
 	}
-	
+
+	@GetMapping("getByIsActiveAndIsApprovedOrderByReleaseDateDesc")
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedOrderByReleaseDateDesc() {
+		return this.jobAdvertisementService.getByIsActiveAndIsApprovedOrderByReleaseDateDesc();
+	}
+
+	@GetMapping("getByIsActiveAndIsApprovedAndJob_Position_Id")
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndJob_Position_Id(
+			@RequestParam int jobPositionId) {
+		return this.jobAdvertisementService.getByIsActiveAndIsApprovedAndJob_Position_Id(jobPositionId);
+	}
+
 	@GetMapping("getByIsActiveAndIsApprovedAndEmployer_Id")
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndEmployer_Id(@RequestParam int employerId) {
-	return this.jobAdvertisementService.getByIsActiveAndIsApprovedAndEmployer_Id(employerId);
+		return this.jobAdvertisementService.getByIsActiveAndIsApprovedAndEmployer_Id(employerId);
 	}
-	
+
 	@GetMapping("getByIsActiveAndReleaseDate")
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndReleaseDate(
 			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate releaseDate) {
@@ -79,7 +90,6 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getByIsActiveAndId(id);
 	}
 
-	
 	@GetMapping("getByIsActiveAndEmployer_CompanyName")
 	public DataResult<List<JobAdvertisement>> getByIsActiveAndEmployer_CompanyName(@RequestParam String companyName) {
 		return this.jobAdvertisementService.getByIsActiveAndEmployer_CompanyName(companyName);

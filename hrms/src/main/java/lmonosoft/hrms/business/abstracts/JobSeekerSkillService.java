@@ -10,6 +10,8 @@ public interface JobSeekerSkillService {
 
 	Result add(JobSeekerSkill jobSeekerSkill);
 
-
 	DataResult<List<JobSeekerSkill>> getAllByJobSeekerId(int jobSeekerId);
+
+	Result update(int id, JobSeekerSkill jobSeekerSkill);
+
 }

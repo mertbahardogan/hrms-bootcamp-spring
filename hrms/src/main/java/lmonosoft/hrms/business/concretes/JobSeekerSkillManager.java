@@ -35,4 +35,13 @@ public class JobSeekerSkillManager implements JobSeekerSkillService {
 		return new SuccessDataResult<List<JobSeekerSkill>>(seekerSkillDao.getAllByJobSeekerId(jobSeekerId));
 	}
 
+	@Override
+	public Result update(int id, JobSeekerSkill jobSeekerSkill) {
+		var seekerSkill = seekerSkillDao.getById(id).get(0);
+		seekerSkill.setName(jobSeekerSkill.getName());
+		seekerSkill.setJobSeeker(jobSeekerSkill.getJobSeeker());
+		this.seekerSkillDao.save(seekerSkill);
+		return new SuccessResult();
+	}
+
 }

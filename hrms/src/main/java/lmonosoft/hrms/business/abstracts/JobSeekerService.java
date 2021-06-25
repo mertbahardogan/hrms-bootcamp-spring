@@ -14,6 +14,6 @@ public interface JobSeekerService {
 	Result register(JobSeeker jobSeeker, String passwordConfirm);
 
 	DataResult<JobSeekerResumeDto> getResumeByJobSeekerId(int jobSeekerId);
-
-	DataResult<JobSeeker> getById(int jobSeekerId);
+	
+	DataResult<List<JobSeeker>> getById(int jobSeekerId);
 }

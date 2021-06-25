@@ -32,6 +32,11 @@ public class JobSeekersController {
 		return ResponseEntity.ok(this.jobSeekerService.getAll());
 	}
 
+	@GetMapping("getById")
+	public ResponseEntity<?> getById(@RequestParam int jobSeekerId) {
+		return ResponseEntity.ok(this.jobSeekerService.getById(jobSeekerId));
+	}
+
 	@GetMapping("getResumeByJobSeekerId")
 	public ResponseEntity<?> getResumeByJobSeekerId(@RequestParam int jobSeekerId) {
 		return ResponseEntity.ok(this.jobSeekerService.getResumeByJobSeekerId(jobSeekerId));

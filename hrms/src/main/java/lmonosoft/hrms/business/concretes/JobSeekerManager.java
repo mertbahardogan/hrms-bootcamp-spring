@@ -10,14 +10,17 @@ import com.google.common.base.Objects;
 import lmonosoft.hrms.business.abstracts.*;
 import lmonosoft.hrms.business.concretes.CheckHelper.JobSeekerCheckHelper;
 import lmonosoft.hrms.core.adapters.abstracts.UserCheckService;
+import lmonosoft.hrms.core.strings.SuccessMessages;
 import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.core.utilities.results.ErrorResult;
 import lmonosoft.hrms.core.utilities.results.Result;
 import lmonosoft.hrms.core.utilities.results.SuccessDataResult;
 import lmonosoft.hrms.core.utilities.results.SuccessResult;
 import lmonosoft.hrms.dataAccess.abstracts.JobSeekerDao;
+import lmonosoft.hrms.entities.concretes.JobAdvertisement;
 import lmonosoft.hrms.entities.concretes.JobSeeker;
 import lmonosoft.hrms.entities.dtos.JobSeekerResumeDto;
+import net.bytebuddy.asm.Advice.This;
 
 @Service
 public class JobSeekerManager implements JobSeekerService {
@@ -84,14 +87,15 @@ public class JobSeekerManager implements JobSeekerService {
 	}
 
 	@Override
-	public DataResult<JobSeeker> getById(int jobSeekerId) {
-		return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findById(jobSeekerId).get());
+	public DataResult<List<JobSeeker>> getById(int jobSeekerId) {
+		return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.findById(jobSeekerId),
+				SuccessMessages.dataListed);
 	}
 
 	@Override
 	public DataResult<JobSeekerResumeDto> getResumeByJobSeekerId(int jobSeekerId) {
 		JobSeekerResumeDto jobSeekerResumeDto = new JobSeekerResumeDto();
-		jobSeekerResumeDto.setJobSeeker(this.getById(jobSeekerId).getData());
+		jobSeekerResumeDto.setJobSeeker(this.getById(jobSeekerId).getData()); // liste çevirildi hata verebilir
 		jobSeekerResumeDto.setJobSeekerEducations(
 				this.seekerEducationService.getAllByJobSeekerIdOrderByGraduationDateDesc(jobSeekerId).getData());
 		jobSeekerResumeDto.setJobSeekerExperiences(

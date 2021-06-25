@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobSeekerResumeDto {
-	private JobSeeker jobSeeker;
+	private List<JobSeeker> jobSeeker;
 	private List<JobSeekerSkill> jobSeekerSkills;
 	private List<JobSeekerPicture> jobSeekerPictures;
 	private List<JobSeekerLink> jobSeekerLinks;

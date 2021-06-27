@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lmonosoft.hrms.business.abstracts.JobSeekerEducationService;
 import lmonosoft.hrms.entities.concretes.JobSeekerEducation;
+import lmonosoft.hrms.entities.concretes.JobSeekerExperience;
 
 @CrossOrigin
 @RestController
@@ -36,5 +37,10 @@ public class JobSeekerEducationsController {
 	@GetMapping("getAllByJobSeekerIdOrderByGraduationDateDesc")
 	public ResponseEntity<?> getAllByJobSeekerIdOrderByGraduationDateDesc(@RequestParam int jobSeekerId) {
 		return ResponseEntity.ok(this.seekerEducationService.getAllByJobSeekerIdOrderByGraduationDateDesc(jobSeekerId));
+	}
+	
+	@PostMapping("update")
+	public ResponseEntity<?> update(@Valid @RequestParam int id, @RequestBody JobSeekerEducation jobSeekerEducation) {
+		return ResponseEntity.ok(this.seekerEducationService.update(id, jobSeekerEducation));
 	}
 }

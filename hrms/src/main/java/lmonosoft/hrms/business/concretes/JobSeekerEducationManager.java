@@ -37,4 +37,16 @@ public class JobSeekerEducationManager implements JobSeekerEducationService {
 				seekerEducationDao.getAllByJobSeekerIdOrderByGraduationDateDesc(jobSeekerId));
 	}
 
+	@Override
+	public Result update(int id, JobSeekerEducation jobSeekerEducation) {
+		var seekerEducation = seekerEducationDao.getById(id);
+		seekerEducation.setDepartmentName(jobSeekerEducation.getDepartmentName());
+		seekerEducation.setSchoolName(jobSeekerEducation.getSchoolName());
+		seekerEducation.setStartDate(jobSeekerEducation.getStartDate());
+		seekerEducation.setGraduationDate(jobSeekerEducation.getGraduationDate());
+		seekerEducation.setJobSeeker(jobSeekerEducation.getJobSeeker());
+		this.seekerEducationDao.save(seekerEducation);
+		return new SuccessResult();
+	}
+
 }

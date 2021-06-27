@@ -36,4 +36,18 @@ public class JobSeekerExperienceManager implements JobSeekerExperienceService {
 				seekerExperienceDao.getAllByJobSeekerIdOrderByEndDateDesc(jobSeekerId));
 	}
 
+	@Override
+	public Result update(int id, JobSeekerExperience jobSeekerExperience) {
+		var seekerExperience = seekerExperienceDao.getById(id);
+		seekerExperience.setPosition(jobSeekerExperience.getPosition());
+		seekerExperience.setWorkplaceName(jobSeekerExperience.getWorkplaceName());
+		seekerExperience.setStartDate(jobSeekerExperience.getStartDate());
+		seekerExperience.setEndDate(jobSeekerExperience.getEndDate());
+		seekerExperience.setJobSeeker(jobSeekerExperience.getJobSeeker());
+		this.seekerExperienceDao.save(seekerExperience);
+		return new SuccessResult();
+	}
+
+
+
 }

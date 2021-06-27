@@ -10,4 +10,6 @@ public interface JobSeekerEducationService {
 	Result add(JobSeekerEducation jobSeekerEducation);
 
 	DataResult<List<JobSeekerEducation>> getAllByJobSeekerIdOrderByGraduationDateDesc(int jobSeekerId);
+
+	Result update(int id, JobSeekerEducation jobSeekerEducation);
 }

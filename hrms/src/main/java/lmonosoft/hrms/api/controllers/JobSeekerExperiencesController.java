@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lmonosoft.hrms.business.abstracts.JobSeekerExperienceService;
+import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.entities.concretes.JobSeekerExperience;
+import lmonosoft.hrms.entities.concretes.JobSeekerSkill;
 
 @CrossOrigin
 @RestController
@@ -37,5 +39,11 @@ public class JobSeekerExperiencesController {
 	public ResponseEntity<?> getAllByJobSeekerIdOrderByEndDateDesc(@RequestParam int jobSeekerId) {
 		return ResponseEntity.ok(this.seekerExperienceService.getAllByJobSeekerIdOrderByEndDateDesc(jobSeekerId));
 	}
+
+	@PostMapping("update")
+	public ResponseEntity<?> update(@Valid @RequestParam int id, @RequestBody JobSeekerExperience jobSeekerExperience) {
+		return ResponseEntity.ok(this.seekerExperienceService.update(id, jobSeekerExperience));
+	}
+
 
 }

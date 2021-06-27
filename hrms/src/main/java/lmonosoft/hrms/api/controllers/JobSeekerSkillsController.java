@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lmonosoft.hrms.business.abstracts.JobSeekerSkillService;
+import lmonosoft.hrms.core.utilities.results.DataResult;
 import lmonosoft.hrms.entities.concretes.JobSeekerSkill;
 
 @CrossOrigin
@@ -43,4 +44,5 @@ public class JobSeekerSkillsController {
 	public ResponseEntity<?> update(@Valid @RequestParam int id, @RequestBody JobSeekerSkill jobSeekerSkill) {
 		return ResponseEntity.ok(this.seekerSkillService.update(id, jobSeekerSkill));
 	}
+
 }

@@ -12,4 +12,5 @@ public interface JobSeekerSkillDao extends JpaRepository<JobSeekerSkill, Integer
 
 	List<JobSeekerSkill> getById(int jobSeekerId);
 
+
 }

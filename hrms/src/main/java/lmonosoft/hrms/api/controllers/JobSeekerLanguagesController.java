@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lmonosoft.hrms.business.abstracts.JobSeekerLanguageService;
+import lmonosoft.hrms.entities.concretes.JobSeekerExperience;
 import lmonosoft.hrms.entities.concretes.JobSeekerLanguage;
 
 @CrossOrigin
@@ -35,4 +36,11 @@ public class JobSeekerLanguagesController {
 	public ResponseEntity<?> getAllByJobSeekerId(@RequestParam int jobSeekerId) {
 		return ResponseEntity.ok(this.seekerLanguageService.getAllByJobSeekerId(jobSeekerId));
 	}
+
+	@PostMapping("update")
+	public ResponseEntity<?> update(@Valid @RequestParam int id, @RequestBody JobSeekerLanguage jobSeekerLanguage) {
+		return ResponseEntity.ok(this.seekerLanguageService.update(id, jobSeekerLanguage));
+
+	}
+
 }

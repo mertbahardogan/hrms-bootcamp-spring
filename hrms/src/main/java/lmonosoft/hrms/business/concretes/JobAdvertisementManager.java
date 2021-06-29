@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lmonosoft.hrms.business.abstracts.JobAdvertisementService;
@@ -141,6 +143,15 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessDataResult<List<JobAdvertisement>>(
 				this.jobAdvertisementDao.getByIsActiveAndIsApprovedOrderByReleaseDateDesc(),
 				SuccessMessages.dataListed);
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedOrderByReleaseDateDesc(int pageNumber,
+			int pageSize) {
+
+		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
+		return new SuccessDataResult<List<JobAdvertisement>>(
+				this.jobAdvertisementDao.getByIsActiveAndIsApprovedOrderByReleaseDateDesc(pageable));
 	}
 
 }

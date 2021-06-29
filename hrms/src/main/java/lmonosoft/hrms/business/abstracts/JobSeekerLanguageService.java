@@ -11,4 +11,6 @@ public interface JobSeekerLanguageService {
 
 	DataResult<List<JobSeekerLanguage>> getAllByJobSeekerId(int jobSeekerId);
 
+	Result update(int id,JobSeekerLanguage jobSeekerLanguage);
+
 }

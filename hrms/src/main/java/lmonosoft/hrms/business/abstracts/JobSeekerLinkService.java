@@ -10,5 +10,7 @@ public interface JobSeekerLinkService {
 	Result add(JobSeekerLink jobSeekerLink);
 
 	DataResult<List<JobSeekerLink>> getAllByJobSeekerId(int jobSeekerId);
+	
+	Result update(int id,JobSeekerLink jobSeekerLink);
 
 }

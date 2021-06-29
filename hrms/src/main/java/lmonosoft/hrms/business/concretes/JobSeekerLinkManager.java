@@ -35,4 +35,14 @@ public class JobSeekerLinkManager implements JobSeekerLinkService {
 		return new SuccessDataResult<List<JobSeekerLink>>(seekerLinkDao.getAllByJobSeekerId(jobSeekerId));
 	}
 
+	@Override
+	public Result update(int id, JobSeekerLink jobSeekerLink) {
+		var seekerLink=seekerLinkDao.getById(id);
+		seekerLink.setLink(jobSeekerLink.getLink());
+		seekerLink.setLinkType(jobSeekerLink.getLinkType());
+		seekerLink.setJobSeeker(jobSeekerLink.getJobSeeker());
+		this.seekerLinkDao.save(seekerLink);
+		return new SuccessResult();
+	}
+
 }

@@ -9,4 +9,6 @@ import lmonosoft.hrms.entities.concretes.JobSeekerLanguage;
 public interface JobSeekerLanguageDao extends JpaRepository<JobSeekerLanguage, Integer> {
 	List<JobSeekerLanguage> getAllByJobSeekerId(int jobSeekerId);
 
+	JobSeekerLanguage getById(int jobSeekerId);
+
 }

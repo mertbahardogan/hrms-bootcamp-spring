@@ -13,4 +13,6 @@ public interface EmployerDao extends JpaRepository<Employer, Integer> {
 	List<Employer> findByEmail(String email);
 
 	List<Employer> getEmployerById(int id);
+	
+	List<Employer> getByEmployerCase_id(int id);
 }

@@ -13,6 +13,4 @@ public interface JobSeekerExperienceService {
 	DataResult<List<JobSeekerExperience>> getAllByJobSeekerIdOrderByEndDateDesc(int jobSeekerId);
 
 	Result update(int id, JobSeekerExperience jobSeekerExperience);
-
-
 }

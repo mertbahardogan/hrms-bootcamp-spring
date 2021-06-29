@@ -35,5 +35,3 @@ public class User {
 	private String password;
 
 }
-
-//https://www.baeldung.com/javax-validation

@@ -8,5 +8,7 @@ import lmonosoft.hrms.entities.concretes.JobSeekerLink;
 
 public interface JobSeekerLinkDao extends JpaRepository<JobSeekerLink, Integer> {
 
-	   List<JobSeekerLink> getAllByJobSeekerId(int jobSeekerId);
+	List<JobSeekerLink> getAllByJobSeekerId(int jobSeekerId);
+
+	JobSeekerLink getById(int jobSeekerId);
 }

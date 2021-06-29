@@ -9,4 +9,5 @@ import lmonosoft.hrms.entities.concretes.User;
 public interface EmailService {
 	Result sendEmail(User user);
 
+
 }

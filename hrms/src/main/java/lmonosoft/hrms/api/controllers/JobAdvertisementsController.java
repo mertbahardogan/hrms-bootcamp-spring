@@ -125,6 +125,12 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.approveJobAdvertisement(jobAdvertisementId);
 	}
 
+	@GetMapping("getByIsActiveAndIsApprovedOrderByReleaseDateDescByPage")
+	public DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedOrderByReleaseDateDesc(@RequestParam int pageNumber,
+			@RequestParam int pageSize) {
+		return this.jobAdvertisementService.getByIsActiveAndIsApprovedOrderByReleaseDateDesc(pageNumber, pageSize);
+	}
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions) {

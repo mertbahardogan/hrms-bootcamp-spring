@@ -16,9 +16,11 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getByIsActive();
 
 	DataResult<List<JobAdvertisement>> getByIsActiveAndIsApproved();
-
+	
 	DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedOrderByReleaseDateDesc();
 
+	DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedOrderByReleaseDateDesc(int pageNumber,int pageSize);
+	
 	DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndJob_Position_Id(int jobPositionId);
 
 	DataResult<List<JobAdvertisement>> getByIsActiveAndIsApprovedAndEmployer_Id(int employerId);

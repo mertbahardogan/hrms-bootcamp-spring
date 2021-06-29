@@ -3,6 +3,7 @@ package lmonosoft.hrms.dataAccess.abstracts;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,13 +18,16 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 
 	@Query("FROM JobAdvertisement WHERE isActive = True and isApproved=True")
 	List<JobAdvertisement> getByIsActiveAndIsApproved();
-	
+
 	@Query("FROM JobAdvertisement WHERE isActive = True and isApproved=True ORDER BY releaseDate DESC")
 	List<JobAdvertisement> getByIsActiveAndIsApprovedOrderByReleaseDateDesc();
 
+	@Query("FROM JobAdvertisement WHERE isActive = True and isApproved=True ORDER BY releaseDate DESC")
+	List<JobAdvertisement> getByIsActiveAndIsApprovedOrderByReleaseDateDesc(Pageable pageable);
+
 	@Query("FROM JobAdvertisement WHERE isActive = True and isApproved=True and jobPosition.id=:jobPositionId")
-	List<JobAdvertisement> getByIsActiveAndIsApprovedAndJob_Position_Id(int jobPositionId);	
-	
+	List<JobAdvertisement> getByIsActiveAndIsApprovedAndJob_Position_Id(int jobPositionId);
+
 	@Query("FROM JobAdvertisement WHERE isActive = True and isApproved=True and employer.id=:employerId")
 	List<JobAdvertisement> getByIsActiveAndIsApprovedAndEmployer_Id(int employerId);
 

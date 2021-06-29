@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lmonosoft.hrms.business.abstracts.JobSeekerLinkService;
+import lmonosoft.hrms.entities.concretes.JobSeekerLanguage;
 import lmonosoft.hrms.entities.concretes.JobSeekerLink;
 
 @CrossOrigin
@@ -32,10 +33,16 @@ public class JobSeekerLinksController {
 	public ResponseEntity<?> add(@Valid @RequestBody JobSeekerLink jobSeekerLink) {
 		return ResponseEntity.ok(this.seekerLinkService.add(jobSeekerLink));
 	}
-	
+
 	@GetMapping("getAllByJobSeekerId")
 	public ResponseEntity<?> getAllByJobSeekerId(@RequestParam int jobSeekerId) {
 		return ResponseEntity.ok(this.seekerLinkService.getAllByJobSeekerId(jobSeekerId));
+	}
+
+	@PostMapping("update")
+	public ResponseEntity<?> update(@Valid @RequestParam int id, @RequestBody JobSeekerLink jobSeekerLink) {
+		return ResponseEntity.ok(this.seekerLinkService.update(id, jobSeekerLink));
+
 	}
 
 }
